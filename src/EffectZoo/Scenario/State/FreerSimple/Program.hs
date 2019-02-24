@@ -2,8 +2,8 @@
 
 module EffectZoo.Scenario.State.FreerSimple.Program where
 
-import Control.Monad.Freer
-import Control.Monad.Freer.State
+import           Control.Monad.Freer
+import           Control.Monad.Freer.State
 
 program :: Member (State Int) effects => Eff effects Int
 program = do

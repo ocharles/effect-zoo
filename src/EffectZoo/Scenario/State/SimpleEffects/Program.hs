@@ -2,8 +2,8 @@
 
 module EffectZoo.Scenario.State.SimpleEffects.Program where
 
-import Control.Effects
-import Control.Effects.State
+import           Control.Effects
+import           Control.Effects.State
 
 program :: MonadEffect (State Int) m => m Int
 program = do

@@ -3,10 +3,11 @@
 
 module EffectZoo.Scenario.FileSizes.SimpleEffects.File where
 
-import Control.Effects
-import Control.Monad.IO.Class
-import qualified EffectZoo.Scenario.FileSizes.Shared as Shared
-import GHC.Generics
+import           Control.Effects
+import           Control.Monad.IO.Class
+import qualified EffectZoo.Scenario.FileSizes.Shared
+                                               as Shared
+import           GHC.Generics
 
 data File m = File
   { _tryFileSize :: FilePath -> m (Maybe Int)

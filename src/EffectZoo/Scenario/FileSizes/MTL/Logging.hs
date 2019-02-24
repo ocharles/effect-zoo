@@ -2,11 +2,12 @@
 
 module EffectZoo.Scenario.FileSizes.MTL.Logging where
 
-import Control.Monad.IO.Class
-import Control.Monad.Trans.Class
-import Control.Monad.Trans.Reader
-import Data.IORef
-import qualified EffectZoo.Scenario.FileSizes.Shared as Shared
+import           Control.Monad.IO.Class
+import           Control.Monad.Trans.Class
+import           Control.Monad.Trans.Reader
+import           Data.IORef
+import qualified EffectZoo.Scenario.FileSizes.Shared
+                                               as Shared
 
 class Monad m =>
       MonadLog m

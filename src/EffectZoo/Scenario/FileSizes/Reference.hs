@@ -2,13 +2,14 @@
 
 module EffectZoo.Scenario.FileSizes.Reference where
 
-import Data.IORef
-import qualified EffectZoo.Scenario.FileSizes.Shared as Shared
+import           Data.IORef
+import qualified EffectZoo.Scenario.FileSizes.Shared
+                                               as Shared
 
 calculateFileSizes :: [FilePath] -> IO (Int, [String])
 calculateFileSizes files = do
-  logs <- newIORef []
-  size <- program logs files
+  logs      <- newIORef []
+  size      <- program logs files
   finalLogs <- readIORef logs
   return (size, finalLogs)
 

@@ -2,7 +2,10 @@
 
 module EffectZoo.Scenario.State.MTL.Program where
 
-import Control.Monad.State (MonadState, get, put)
+import           Control.Monad.State                      ( MonadState
+                                                          , get
+                                                          , put
+                                                          )
 
 program :: MonadState Int m => m Int
 program = do

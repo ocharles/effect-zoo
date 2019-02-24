@@ -1,9 +1,11 @@
 module EffectZoo.Scenario.FileSizes.RIO.Main where
 
-import EffectZoo.Scenario.FileSizes.RIO.File
-import EffectZoo.Scenario.FileSizes.RIO.Logging
-import EffectZoo.Scenario.FileSizes.RIO.Program
-import RIO hiding (HasLogFunc(..), LogFunc)
+import           EffectZoo.Scenario.FileSizes.RIO.File
+import           EffectZoo.Scenario.FileSizes.RIO.Logging
+import           EffectZoo.Scenario.FileSizes.RIO.Program
+import           RIO                               hiding ( HasLogFunc(..)
+                                                          , LogFunc
+                                                          )
 
 data Env = Env
   { logFunc :: LogFunc
@@ -20,6 +22,6 @@ calculateFileSizes :: [FilePath] -> IO (Int, [String])
 calculateFileSizes files = do
   logs <- newIORef []
   let env = Env {logFunc = logToIORef logs, fileFunc = ioFileFunc}
-  size <- runRIO env (program files)
+  size      <- runRIO env (program files)
   finalLogs <- readIORef logs
   return (size, finalLogs)

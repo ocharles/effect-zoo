@@ -2,8 +2,9 @@
 
 module EffectZoo.Scenario.FileSizes.MTL.File where
 
-import Control.Monad.IO.Class
-import qualified EffectZoo.Scenario.FileSizes.Shared as Shared
+import           Control.Monad.IO.Class
+import qualified EffectZoo.Scenario.FileSizes.Shared
+                                               as Shared
 
 class Monad m =>
       MonadFile m

@@ -2,8 +2,8 @@
 
 module EffectZoo.Scenario.State.FusedEffects.Program where
 
-import Control.Effect
-import Control.Effect.State
+import           Control.Effect
+import           Control.Effect.State
 
 program :: (Member (State Int) sig, Carrier sig m, Monad m) => m Int
 program = do

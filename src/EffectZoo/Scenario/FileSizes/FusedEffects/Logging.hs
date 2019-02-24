@@ -4,14 +4,15 @@
 
 module EffectZoo.Scenario.FileSizes.FusedEffects.Logging where
 
-import Control.Effect
-import Control.Effect.Carrier
-import Control.Effect.Sum
-import Control.Monad.IO.Class
-import Control.Monad.Trans.Reader
-import Data.Coerce
-import Data.IORef
-import qualified EffectZoo.Scenario.FileSizes.Shared as Shared
+import           Control.Effect
+import           Control.Effect.Carrier
+import           Control.Effect.Sum
+import           Control.Monad.IO.Class
+import           Control.Monad.Trans.Reader
+import           Data.Coerce
+import           Data.IORef
+import qualified EffectZoo.Scenario.FileSizes.Shared
+                                               as Shared
 
 data Logging (m :: * -> *) k =
   LogMsg String
@@ -49,8 +50,8 @@ instance (Carrier sig m, MonadIO m) =>
                runLogIOC r k)
         x
 
-runLogIOC2 ::
-     (MonadIO m, Carrier sig m, Effect sig)
+runLogIOC2
+  :: (MonadIO m, Carrier sig m, Effect sig)
   => IORef [String]
   -> Eff (LogIOC m) a
   -> m a

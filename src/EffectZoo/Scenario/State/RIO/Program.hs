@@ -2,8 +2,8 @@
 
 module EffectZoo.Scenario.State.RIO.Program where
 
-import Control.Monad.State.Class
-import RIO
+import           Control.Monad.State.Class
+import           RIO
 
 program :: HasStateRef Int env => RIO env Int
 program = do

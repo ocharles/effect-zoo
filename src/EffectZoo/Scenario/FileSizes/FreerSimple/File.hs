@@ -2,8 +2,9 @@
 
 module EffectZoo.Scenario.FileSizes.FreerSimple.File where
 
-import Control.Monad.Freer
-import qualified EffectZoo.Scenario.FileSizes.Shared as Shared
+import           Control.Monad.Freer
+import qualified EffectZoo.Scenario.FileSizes.Shared
+                                               as Shared
 
 data File a where
   TryFileSize :: FilePath -> File (Maybe Int)

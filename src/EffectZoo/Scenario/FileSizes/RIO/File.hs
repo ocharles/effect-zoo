@@ -1,8 +1,9 @@
 module EffectZoo.Scenario.FileSizes.RIO.File where
 
-import Control.Monad.IO.Class
-import qualified EffectZoo.Scenario.FileSizes.Shared as Shared
-import RIO hiding (HasLogFunc(..))
+import           Control.Monad.IO.Class
+import qualified EffectZoo.Scenario.FileSizes.Shared
+                                               as Shared
+import           RIO                               hiding ( HasLogFunc(..) )
 
 newtype FileFunc =
   FileFunc (FilePath -> IO (Maybe Int))

@@ -4,13 +4,14 @@
 
 module EffectZoo.Scenario.FileSizes.FusedEffects.File where
 
-import Control.Effect
-import Control.Effect.Carrier
-import Control.Effect.Sum
-import Control.Monad.IO.Class
-import Control.Monad.Trans.Reader
-import Data.Coerce
-import qualified EffectZoo.Scenario.FileSizes.Shared as Shared
+import           Control.Effect
+import           Control.Effect.Carrier
+import           Control.Effect.Sum
+import           Control.Monad.IO.Class
+import           Control.Monad.Trans.Reader
+import           Data.Coerce
+import qualified EffectZoo.Scenario.FileSizes.Shared
+                                               as Shared
 
 data File (m :: * -> *) k =
   TryFileSize FilePath
@@ -43,6 +44,6 @@ instance (Carrier sig m, MonadIO m) => Carrier (File :+: sig) (FileIOC m) where
              msize <- liftIO (Shared.tryGetFileSize path)
              runFileIOC (k msize))
 
-runFileIOC2 ::
-     (MonadIO m, Carrier sig m, Effect sig) => Eff (FileIOC m) a -> m a
+runFileIOC2
+  :: (MonadIO m, Carrier sig m, Effect sig) => Eff (FileIOC m) a -> m a
 runFileIOC2 = runFileIOC . interpret

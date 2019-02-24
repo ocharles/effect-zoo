@@ -1,7 +1,10 @@
 module EffectZoo.Scenario.FileSizes.RIO.Logging where
 
-import qualified EffectZoo.Scenario.FileSizes.Shared as Shared
-import RIO hiding (HasLogFunc(..), LogFunc(..))
+import qualified EffectZoo.Scenario.FileSizes.Shared
+                                               as Shared
+import           RIO                               hiding ( HasLogFunc(..)
+                                                          , LogFunc(..)
+                                                          )
 
 newtype LogFunc =
   LogFunc (String -> IO ())
