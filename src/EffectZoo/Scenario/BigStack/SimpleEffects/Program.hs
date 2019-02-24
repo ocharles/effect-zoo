@@ -1,14 +1,13 @@
-{-# language DataKinds, FlexibleContexts #-}
+{-# LANGUAGE DataKinds, FlexibleContexts #-}
 
 module EffectZoo.Scenario.BigStack.SimpleEffects.Program where
 
-import Control.Monad
 import Control.Effects
-import Control.Effects.State
 import Control.Effects.Reader
+import Control.Effects.State
+import Control.Monad
 
-
-program :: MonadEffects '[ State Int, ReadEnv Int ] m => m ()
+program :: MonadEffects '[ State Int, ReadEnv Int] m => m ()
 program = do
   n <- readEnv
-  replicateM_ n ( modifyState ( + n ) )
+  replicateM_ n (modifyState (+ n))
