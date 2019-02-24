@@ -15,6 +15,55 @@ executable effect-zoo
                        freer-simple >=1.1 && <1.2,
                        transformers >=0.5 && <0.6,
                        mtl >=2.2 && <2.3,
-                       fused-effects >=0.1.2.1 && < 0.2
+                       fused-effects >=0.1.2.1 && < 0.2,
+                       unix,
+                       rio
   hs-source-dirs:      src
+  other-modules:
+    EffectZoo.Scenario.BigStack
+    EffectZoo.Scenario.BigStack.FreerSimple.Main
+    EffectZoo.Scenario.BigStack.FreerSimple.Program
+    EffectZoo.Scenario.BigStack.FusedEffects.Main
+    EffectZoo.Scenario.BigStack.FusedEffects.Program
+    EffectZoo.Scenario.BigStack.MTL.Main
+    EffectZoo.Scenario.BigStack.MTL.Program
+    EffectZoo.Scenario.BigStack.SimpleEffects.Main
+    EffectZoo.Scenario.BigStack.SimpleEffects.Program
+    EffectZoo.Scenario.FileSizes
+    EffectZoo.Scenario.FileSizes.FreerSimple.File
+    EffectZoo.Scenario.FileSizes.FreerSimple.Logging
+    EffectZoo.Scenario.FileSizes.FreerSimple.Main
+    EffectZoo.Scenario.FileSizes.FreerSimple.Program
+    EffectZoo.Scenario.FileSizes.FusedEffects.File
+    EffectZoo.Scenario.FileSizes.FusedEffects.Logging
+    EffectZoo.Scenario.FileSizes.FusedEffects.Main
+    EffectZoo.Scenario.FileSizes.FusedEffects.Program
+    EffectZoo.Scenario.FileSizes.MTL.File
+    EffectZoo.Scenario.FileSizes.MTL.Logging
+    EffectZoo.Scenario.FileSizes.MTL.Main
+    EffectZoo.Scenario.FileSizes.MTL.Program
+    EffectZoo.Scenario.FileSizes.RIO.File
+    EffectZoo.Scenario.FileSizes.RIO.Logging
+    EffectZoo.Scenario.FileSizes.RIO.Main
+    EffectZoo.Scenario.FileSizes.RIO.Program
+    EffectZoo.Scenario.FileSizes.Reference
+    EffectZoo.Scenario.FileSizes.Shared
+    EffectZoo.Scenario.FileSizes.SimpleEffects.File
+    EffectZoo.Scenario.FileSizes.SimpleEffects.Logging
+    EffectZoo.Scenario.FileSizes.SimpleEffects.Main
+    EffectZoo.Scenario.FileSizes.SimpleEffects.Program
+    EffectZoo.Scenario.State
+    EffectZoo.Scenario.State.FreerSimple.Main
+    EffectZoo.Scenario.State.FreerSimple.Program
+    EffectZoo.Scenario.State.FusedEffects.Main
+    EffectZoo.Scenario.State.FusedEffects.Program
+    EffectZoo.Scenario.State.MTL.LazyStateT
+    EffectZoo.Scenario.State.MTL.Program
+    EffectZoo.Scenario.State.MTL.StrictStateT
+    EffectZoo.Scenario.State.RIO.Main
+    EffectZoo.Scenario.State.RIO.Program
+    EffectZoo.Scenario.State.Reference
+    EffectZoo.Scenario.State.SimpleEffects.Main
+    EffectZoo.Scenario.State.SimpleEffects.Program
   default-language:    Haskell2010
+  ghc-options: -O2
