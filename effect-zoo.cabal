@@ -62,6 +62,9 @@ executable effect-zoo
     EffectZoo.Scenario.NoInline.SimpleEffects.Increment
     EffectZoo.Scenario.NoInline.SimpleEffects.Main
     EffectZoo.Scenario.NoInline.SimpleEffects.Program
+    EffectZoo.Scenario.Inline
+    EffectZoo.Scenario.Inline.FreerSimple
+    EffectZoo.Scenario.Inline.FusedEffects
     EffectZoo.Scenario.State
     EffectZoo.Scenario.State.FreerSimple.Main
     EffectZoo.Scenario.State.FreerSimple.Program

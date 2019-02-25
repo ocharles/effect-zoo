@@ -5,6 +5,7 @@ import           EffectZoo.Scenario.BigStack
 import           EffectZoo.Scenario.FileSizes
 import           EffectZoo.Scenario.State
 import           EffectZoo.Scenario.NoInline
+import           EffectZoo.Scenario.Inline
 
 main :: IO ()
 main = defaultMain
@@ -12,4 +13,5 @@ main = defaultMain
   , EffectZoo.Scenario.State.benchmarks
   , EffectZoo.Scenario.BigStack.benchmarks
   , EffectZoo.Scenario.NoInline.benchmarks
+  , EffectZoo.Scenario.Inline.benchmarks
   ]
