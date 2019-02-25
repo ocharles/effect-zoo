@@ -16,8 +16,7 @@ executable effect-zoo
                        transformers >=0.5 && <0.6,
                        mtl >=2.2 && <2.3,
                        fused-effects >=0.1.2.1 && < 0.2,
-                       unix,
-                       rio
+                       unix
   hs-source-dirs:      src
   other-modules:
     EffectZoo.Scenario.BigStack
@@ -62,6 +61,7 @@ executable effect-zoo
     EffectZoo.Scenario.Inline
     EffectZoo.Scenario.Inline.FreerSimple
     EffectZoo.Scenario.Inline.FusedEffects
+    EffectZoo.Scenario.Inline.SimpleEffects
     EffectZoo.Scenario.NoInline
     EffectZoo.Scenario.NoInline.FreerSimple.Main
     EffectZoo.Scenario.NoInline.FreerSimple.Noop
