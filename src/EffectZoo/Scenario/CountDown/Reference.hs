@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module EffectZoo.Scenario.State.Reference where
+module EffectZoo.Scenario.CountDown.Reference where
 
 import           Data.Functor.Identity
 

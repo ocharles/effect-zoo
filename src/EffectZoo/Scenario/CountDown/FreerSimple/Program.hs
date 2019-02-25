@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module EffectZoo.Scenario.State.FreerSimple.Program where
+module EffectZoo.Scenario.CountDown.FreerSimple.Program where
 
 import           Control.Monad.Freer
 import           Control.Monad.Freer.State

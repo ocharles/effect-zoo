@@ -7,8 +7,6 @@ import qualified EffectZoo.Scenario.FileSizes.FusedEffects.Main
                                                as FusedEffects
 import qualified EffectZoo.Scenario.FileSizes.MTL.Main
                                                as MTL
-import qualified EffectZoo.Scenario.FileSizes.RIO.Main
-                                               as RIO
 import qualified EffectZoo.Scenario.FileSizes.Reference
                                                as Reference
 import qualified EffectZoo.Scenario.FileSizes.SimpleEffects.Main
@@ -29,7 +27,6 @@ benchmarks = bgroup
         , FusedEffects.calculateFileSizes
         )
       , ("EffectZoo.Scenario.FileSizes.MTL.Main" , MTL.calculateFileSizes)
-      , ("EffectZoo.Scenario.FileSizes.RIO.Main" , RIO.calculateFileSizes)
       , ("EffectZoo.Scenario.FileSizes.Reference", Reference.calculateFileSizes)
       ]
     return $ bgroup name $ do

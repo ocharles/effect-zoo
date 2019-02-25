@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module EffectZoo.Scenario.State.SimpleEffects.Program where
+module EffectZoo.Scenario.CountDown.SimpleEffects.Program where
 
 import           Control.Effects
 import           Control.Effects.State

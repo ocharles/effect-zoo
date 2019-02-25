@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module EffectZoo.Scenario.State.MTL.Program where
+module EffectZoo.Scenario.CountDown.MTL.Program where
 
 import           Control.Monad.State                      ( MonadState
                                                           , get
