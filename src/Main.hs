@@ -3,6 +3,7 @@ module Main where
 import           Criterion.Main
 import           EffectZoo.Scenario.BigStack
 import           EffectZoo.Scenario.FileSizes
+import           EffectZoo.Scenario.Reinterpretation
 import           EffectZoo.Scenario.CountDown
 import           EffectZoo.Scenario.NoInline
 import           EffectZoo.Scenario.Inline
@@ -14,4 +15,5 @@ main = defaultMain
   , EffectZoo.Scenario.BigStack.benchmarks
   , EffectZoo.Scenario.NoInline.benchmarks
   , EffectZoo.Scenario.Inline.benchmarks
+  , EffectZoo.Scenario.Reinterpretation.benchmarks
   ]

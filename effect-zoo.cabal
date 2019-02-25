@@ -72,5 +72,11 @@ executable effect-zoo
     EffectZoo.Scenario.NoInline.SimpleEffects.Increment
     EffectZoo.Scenario.NoInline.SimpleEffects.Main
     EffectZoo.Scenario.NoInline.SimpleEffects.Program
+    EffectZoo.Scenario.Reinterpretation
+    EffectZoo.Scenario.Reinterpretation.FreerSimple.HTTP
+    EffectZoo.Scenario.Reinterpretation.FreerSimple.Logging
+    EffectZoo.Scenario.Reinterpretation.FreerSimple.Main
+    EffectZoo.Scenario.Reinterpretation.FreerSimple.Zooit
+    EffectZoo.Scenario.Reinterpretation.Shared
   default-language:    Haskell2010
   ghc-options: -O2
