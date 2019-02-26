@@ -14,25 +14,18 @@ import qualified EffectZoo.Scenario.CountDown.Reference
 import qualified EffectZoo.Scenario.CountDown.SimpleEffects.Main
                                                as SimpleEffects
 
-benchmarks :: Benchmark
-benchmarks = bgroup
-  "EffectZoo.Scenario.CountDown"
-  (do
-    (name, countDown) <-
-      [ ("EffectZoo.Scenario.CountDown.MTL.LazyStateT", nf MTLLazyStateT.countDown)
-      , ( "EffectZoo.Scenario.CountDown.MTL.StrictStateT"
-        , nf MTLStrictStateT.countDown
-        )
-      , ("EffectZoo.Scenario.CountDown.FreerSimple.Main", nf FreerSimple.countDown)
-      , ( "EffectZoo.Scenario.CountDown.SimpleEffects.Main"
-        , nf SimpleEffects.countDown
-        )
-      , ( "EffectZoo.Scenario.CountDown.FusedEffects.Main"
-        , nf FusedEffects.countDown
-        )
-      , ("EffectZoo.Scenario.CountDown.Reference.Main", nf Reference.countDown)
-      ]
-    return $ bgroup name $ do
-      n <- [100, 1000, 1000000]
-      return (bench (show n) (countDown n))
-  )
+benchmarks :: [ ( String, String, Benchmarkable ) ]
+benchmarks = do
+  ( implementation, countDown ) <-
+    [ ( "mtl (lazy)", nf MTLLazyStateT.countDown )
+    , ( "mtl (strict)", nf MTLStrictStateT.countDown )
+    , ( "freer-simple", nf FreerSimple.countDown )
+    , ( "simple-effects", nf SimpleEffects.countDown )
+    , ( "fused-effects", nf FusedEffects.countDown )
+    , ( "Reference", nf Reference.countDown )
+    ]
+
+  n <-
+    [ 100, 1000, 1000000 ]
+
+  return ( implementation, show n, countDown n )
