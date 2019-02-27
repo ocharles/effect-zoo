@@ -3,13 +3,13 @@
 module EffectZoo.Scenario.CountDown.SimpleEffects.Program where
 
 import           Control.Effects
-import           Control.Effects.State
+import           EffectZoo.Scenario.CountDown.SimpleEffects.IntState
 
-program :: MonadEffect (State Int) m => m Int
+program :: MonadEffect IntState m => m Int
 program = do
-  n <- getState
+  n <- get
   if n <= 0
     then pure n
     else do
-      setState (n - 1)
+      put (n - 1)
       program

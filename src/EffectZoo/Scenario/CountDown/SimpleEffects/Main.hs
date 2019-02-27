@@ -1,14 +1,9 @@
 module EffectZoo.Scenario.CountDown.SimpleEffects.Main where
 
 import           Control.Effects
-import           Control.Effects.State
 import           Data.Functor.Identity
 import           EffectZoo.Scenario.CountDown.SimpleEffects.Program
+import           EffectZoo.Scenario.CountDown.SimpleEffects.IntState
 
 countDown :: Int -> (Int, Int)
-countDown initial = runIdentity (implementStateViaStateT initial program')
- where
-  program' = do
-    n <- program
-    s <- getState
-    return (n, s)
+countDown initial = runIdentity (runIntState initial program)

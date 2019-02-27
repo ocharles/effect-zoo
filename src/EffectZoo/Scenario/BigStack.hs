@@ -10,14 +10,15 @@ import qualified EffectZoo.Scenario.BigStack.MTL.Main
 import qualified EffectZoo.Scenario.BigStack.SimpleEffects.Main
                                                as SimpleEffects
 
-benchmarks :: [ ( String, String, Benchmarkable ) ]
+benchmarks :: [(String, String, Benchmarkable)]
 benchmarks = do
-  ( implementation, bigStacks ) <-
+  (implementation, bigStacks) <-
     [ ( "freer-simple"
       , [ (0 , FreerSimple.bigStack0)
         , (1 , FreerSimple.bigStack1)
         , (5 , FreerSimple.bigStack5)
         , (10, FreerSimple.bigStack10)
+        , (20, FreerSimple.bigStack20)
         ]
       )
     , ( "fused-effects"
@@ -25,6 +26,7 @@ benchmarks = do
         , (1 , FusedEffects.bigStack1)
         , (5 , FusedEffects.bigStack5)
         , (10, FusedEffects.bigStack10)
+        , (20, FusedEffects.bigStack20)
         ]
       )
     , ( "mtl"
@@ -32,6 +34,7 @@ benchmarks = do
         , (1 , MTL.bigStack1)
         , (5 , MTL.bigStack5)
         , (10, MTL.bigStack10)
+        , (20, MTL.bigStack20)
         ]
       )
     , ( "simple-effects"
@@ -39,11 +42,11 @@ benchmarks = do
         , (1 , SimpleEffects.bigStack1)
         , (5 , SimpleEffects.bigStack5)
         , (10, SimpleEffects.bigStack10)
+        , (20, SimpleEffects.bigStack20)
         ]
       )
     ]
 
-  ( stackSize, go ) <-
-    bigStacks
+  (stackSize, go) <- bigStacks
 
-  return ( implementation, show stackSize ++ " layers", whnf go 0 )
+  return (implementation, show stackSize ++ " layers", whnf go 0)
