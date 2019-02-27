@@ -4,15 +4,8 @@ import           Criterion
 import qualified EffectZoo.Scenario.Reinterpretation.FreerSimple.Main
                                                as FreerSimple
 
-benchmarks :: Benchmark
-benchmarks = bgroup
-  "EffectZoo.Scenario.Reinterpretation"
-  (do
-    (name, program) <-
-      [ ( "EffectZoo.Scenario.Reinterpretation.FreerSimple.Main"
-        , FreerSimple.listScenarios
-        )
-      ]
+benchmarks :: [(String, String, Benchmarkable)]
+benchmarks = do
+  (name, program) <- [("freer-simple", FreerSimple.listScenarios)]
 
-    return (bench name (nfIO program))
-  )
+  return (name, "", nfIO program)

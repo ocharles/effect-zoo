@@ -10,17 +10,18 @@ import qualified EffectZoo.Scenario.CountDown  as CountDown
 import qualified EffectZoo.Scenario.FileSizes  as FileSizes
 import           EffectZoo.Scenario.Inline
 import           EffectZoo.Scenario.NoInline
-import           EffectZoo.Scenario.Reinterpretation
+import qualified EffectZoo.Scenario.Reinterpretation
+                                               as Reinterpretation
 import           Statistics.Types
 
 main :: IO ()
 main = do
   for
-    [
-      -- ("big-stack.csv" , BigStack.benchmarks)
-     ("countdown.csv", CountDown.benchmarks)
-    -- , ("file-sizes.csv", FileSizes.benchmarks)
-                                            ]
+    [ ("big-stack.csv"       , BigStack.benchmarks)
+    , ("countdown.csv"       , CountDown.benchmarks)
+    , ("file-sizes.csv"      , FileSizes.benchmarks)
+    , ("reinterpretation.csv", Reinterpretation.benchmarks)
+    ]
     (\(csvFile, scenario) -> do
       reports <- for
         scenario
