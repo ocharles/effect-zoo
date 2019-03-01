@@ -3,9 +3,9 @@
 module EffectZoo.Scenario.CountDown.FusedEffects.Program where
 
 import           Control.Effect
-import           EffectZoo.Scenario.CountDown.FusedEffects.IntState
+import           Control.Effect.State
 
-program :: (Member IntState sig, Carrier sig m, Monad m) => m Int
+program :: (Member (State Int) sig, Carrier sig m, Monad m) => m Int
 program = do
   n <- get
   if n <= 0

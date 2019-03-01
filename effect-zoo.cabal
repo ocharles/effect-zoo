@@ -36,10 +36,8 @@ executable effect-zoo
     EffectZoo.Scenario.BigStack.SimpleEffects.Main
     EffectZoo.Scenario.BigStack.SimpleEffects.Program
     EffectZoo.Scenario.CountDown
-    EffectZoo.Scenario.CountDown.FreerSimple.IntState
     EffectZoo.Scenario.CountDown.FreerSimple.Main
     EffectZoo.Scenario.CountDown.FreerSimple.Program
-    EffectZoo.Scenario.CountDown.FusedEffects.IntState
     EffectZoo.Scenario.CountDown.FusedEffects.Main
     EffectZoo.Scenario.CountDown.FusedEffects.Program
     EffectZoo.Scenario.CountDown.MTL.LazyStateT
@@ -47,7 +45,6 @@ executable effect-zoo
     EffectZoo.Scenario.CountDown.MTL.StrictStateT
     EffectZoo.Scenario.CountDown.Reference
     EffectZoo.Scenario.CountDown.SimpleEffects.Main
-    EffectZoo.Scenario.CountDown.SimpleEffects.IntState
     EffectZoo.Scenario.CountDown.SimpleEffects.Program
     EffectZoo.Scenario.FileSizes
     EffectZoo.Scenario.FileSizes.FreerSimple.File

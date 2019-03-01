@@ -3,9 +3,9 @@
 module EffectZoo.Scenario.CountDown.FreerSimple.Program where
 
 import           Control.Monad.Freer
-import           EffectZoo.Scenario.CountDown.FreerSimple.IntState
+import           Control.Monad.Freer.State
 
-program :: Member IntState effects => Eff effects Int
+program :: Member (State Int) effects => Eff effects Int
 program = do
   n <- get
   if n <= 0
