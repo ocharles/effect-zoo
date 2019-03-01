@@ -8,8 +8,6 @@ import           Data.Traversable                         ( for )
 import qualified EffectZoo.Scenario.BigStack   as BigStack
 import qualified EffectZoo.Scenario.CountDown  as CountDown
 import qualified EffectZoo.Scenario.FileSizes  as FileSizes
-import           EffectZoo.Scenario.Inline
-import           EffectZoo.Scenario.NoInline
 import qualified EffectZoo.Scenario.Reinterpretation
                                                as Reinterpretation
 import           Statistics.Types

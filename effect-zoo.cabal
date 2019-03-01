@@ -65,20 +65,6 @@ executable effect-zoo
     EffectZoo.Scenario.FileSizes.SimpleEffects.Logging
     EffectZoo.Scenario.FileSizes.SimpleEffects.Main
     EffectZoo.Scenario.FileSizes.SimpleEffects.Program
-    EffectZoo.Scenario.Inline
-    EffectZoo.Scenario.Inline.FreerSimple
-    EffectZoo.Scenario.Inline.FusedEffects
-    EffectZoo.Scenario.Inline.SimpleEffects
-    EffectZoo.Scenario.NoInline
-    EffectZoo.Scenario.NoInline.FreerSimple.Main
-    EffectZoo.Scenario.NoInline.FreerSimple.Noop
-    EffectZoo.Scenario.NoInline.FreerSimple.Program
-    EffectZoo.Scenario.NoInline.FusedEffects.Increment
-    EffectZoo.Scenario.NoInline.FusedEffects.Main
-    EffectZoo.Scenario.NoInline.FusedEffects.Program
-    EffectZoo.Scenario.NoInline.SimpleEffects.Increment
-    EffectZoo.Scenario.NoInline.SimpleEffects.Main
-    EffectZoo.Scenario.NoInline.SimpleEffects.Program
     EffectZoo.Scenario.Reinterpretation
     EffectZoo.Scenario.Reinterpretation.FreerSimple.HTTP
     EffectZoo.Scenario.Reinterpretation.FreerSimple.Logging
