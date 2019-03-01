@@ -87,6 +87,14 @@ executable effect-zoo
     EffectZoo.Scenario.Reinterpretation.FreerSimple.Logging
     EffectZoo.Scenario.Reinterpretation.FreerSimple.Main
     EffectZoo.Scenario.Reinterpretation.FreerSimple.Zooit
+    EffectZoo.Scenario.Reinterpretation.FusedEffects.HTTP
+    EffectZoo.Scenario.Reinterpretation.FusedEffects.Logging
+    EffectZoo.Scenario.Reinterpretation.FusedEffects.Main
+    EffectZoo.Scenario.Reinterpretation.FusedEffects.Zooit
+    EffectZoo.Scenario.Reinterpretation.SimpleEffects.HTTP
+    EffectZoo.Scenario.Reinterpretation.SimpleEffects.Logging
+    EffectZoo.Scenario.Reinterpretation.SimpleEffects.Main
+    EffectZoo.Scenario.Reinterpretation.SimpleEffects.Zooit
     EffectZoo.Scenario.Reinterpretation.Shared
   default-language:    Haskell2010
   ghc-options: -O2
