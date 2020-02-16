@@ -15,7 +15,7 @@ executable effect-zoo
                        freer-simple >=1.1 && <1.2,
                        transformers >=0.5 && <0.6,
                        mtl >=2.2 && <2.3,
-                       fused-effects >=0.1.2.1 && < 0.2,
+                       fused-effects >=1.0.0.1 && <1.1,
                        unix,
                        cassava,
                        bytestring,
@@ -81,3 +81,6 @@ executable effect-zoo
     EffectZoo.Scenario.Reinterpretation.Shared
   default-language:    Haskell2010
   ghc-options: -O2
+
+  default-extensions:
+    DeriveGeneric GeneralizedNewtypeDeriving KindSignatures LambdaCase PackageImports TypeOperators

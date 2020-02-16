@@ -1,36 +1,26 @@
 {-# language KindSignatures, FlexibleContexts, DeriveFunctor, TypeOperators, FlexibleInstances, MultiParamTypeClasses, UndecidableInstances #-}
 module EffectZoo.Scenario.Reinterpretation.FusedEffects.HTTP where
 
-import           Control.Effect
-import           Control.Effect.Carrier
-import           Control.Effect.Sum
-import           Control.Effect.Reader
-import           Data.Coerce
+import GHC.Generics (Generic1)
+import "fused-effects" Control.Algebra
+import "fused-effects" Control.Effect.Sum
+import "fused-effects" Control.Effect.Reader
 
-data HTTP (m :: * -> *) k = GET String ( String -> k)
-  deriving (Functor)
+data HTTP m k = GET String (String -> m k)
+  deriving (Functor, Generic1)
 
-instance Effect HTTP where
-  handle state handler (GET path k) = GET path (handler . (<$ state) . k)
+instance Effect HTTP
+instance HFunctor HTTP
 
-httpGET :: (Carrier sig m, Member HTTP sig) => String -> m String
-httpGET url = send (GET url ret)
-
-instance HFunctor HTTP where
-  hmap _ = coerce
+httpGET :: Has HTTP sig m => String -> m String
+httpGET url = send (GET url pure)
 
 newtype ReaderHTTPC m a = ReaderHTTPC { runReaderHTTPC :: m a }
+  deriving (Functor, Applicative, Monad)
 
-instance (Carrier sig m, Effect sig, Member (Reader String) sig, Monad m) => Carrier (HTTP :+: sig) (ReaderHTTPC m) where
-  ret = ReaderHTTPC . ret
-  eff  =
-    ReaderHTTPC
-      . handleSum
-          ( eff . handleCoercible )
-          ( \( GET _path k ) -> ask >>= runReaderHTTPC . k )
+instance (Monad m, Has (Reader String) sig m) => Algebra (HTTP :+: sig) (ReaderHTTPC m) where
+  alg (L (GET _path k)) = ReaderHTTPC ask >>= k
+  alg (R other) = ReaderHTTPC (alg (handleCoercible other))
 
-mockResponses
-  :: (Monad m, Carrier sig m, Effect sig, Member (Reader String) sig)
-  => Eff (ReaderHTTPC m) a
-  -> m a
-mockResponses m = runReaderHTTPC (interpret m)
+mockResponses :: ReaderHTTPC m a -> m a
+mockResponses = runReaderHTTPC

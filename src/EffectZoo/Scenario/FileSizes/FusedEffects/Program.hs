@@ -2,12 +2,12 @@
 
 module EffectZoo.Scenario.FileSizes.FusedEffects.Program where
 
-import           Control.Effect
+import "fused-effects" Control.Algebra
 import           EffectZoo.Scenario.FileSizes.FusedEffects.File
 import           EffectZoo.Scenario.FileSizes.FusedEffects.Logging
 
 program
-  :: (Member File sig, Member Logging sig, Carrier sig m, Monad m)
+  :: (Has File sig m, Has Logging sig m)
   => [FilePath]
   -> m Int
 program files = do
@@ -15,7 +15,7 @@ program files = do
   return (sum sizes)
 
 calculateFileSize
-  :: (Member File sig, Member Logging sig, Carrier sig m, Monad m)
+  :: (Has File sig m, Has Logging sig m)
   => FilePath
   -> m Int
 calculateFileSize path = do

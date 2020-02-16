@@ -1,9 +1,9 @@
 module EffectZoo.Scenario.Reinterpretation.FusedEffects.Main where
 
 import           Control.Monad
-import           Control.Effect
-import           Control.Effect.Reader
-import           Control.Effect.Writer
+import "fused-effects" Control.Algebra
+import "fused-effects" Control.Carrier.Reader
+import "fused-effects" Control.Carrier.Writer.Strict
 import           Data.Function
 import           EffectZoo.Scenario.Reinterpretation.FusedEffects.HTTP
 import           EffectZoo.Scenario.Reinterpretation.FusedEffects.Logging
@@ -19,4 +19,3 @@ listScenarios n =
     & runReader response
     & accumulateLogMessages
     & runWriter
-    & runM
