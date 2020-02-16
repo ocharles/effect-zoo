@@ -8,10 +8,10 @@ import           EffectZoo.Scenario.BigStack.FreerSimple.Identity
 import           EffectZoo.Scenario.BigStack.FreerSimple.Program
 
 bigStack0 :: Int -> Int
-bigStack0 s = program & runReader n & execState 0 & run
+bigStack0 s = program & runReader n & execState s & run
 
 bigStack1 :: Int -> Int
-bigStack1 s = program & runReader n & runIdentity & execState 0 & run
+bigStack1 s = program & runReader n & runIdentity & execState s & run
 
 bigStack5 :: Int -> Int
 bigStack5 s =
@@ -22,7 +22,7 @@ bigStack5 s =
     & runIdentity
     & runIdentity
     & runIdentity
-    & execState 0
+    & execState s
     & run
 
 bigStack10 :: Int -> Int
@@ -39,7 +39,7 @@ bigStack10 s =
     & runIdentity
     & runIdentity
     & runIdentity
-    & execState 0
+    & execState s
     & run
 
 bigStack20 :: Int -> Int
@@ -66,7 +66,7 @@ bigStack20 s =
     & runIdentity
     & runIdentity
     & runIdentity
-    & execState 0
+    & execState s
     & run
 
 n :: Int
