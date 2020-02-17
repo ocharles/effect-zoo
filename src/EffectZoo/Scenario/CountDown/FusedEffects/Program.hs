@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -dsuppress-type-signatures #-}
 {-# LANGUAGE FlexibleContexts #-}
 
 module EffectZoo.Scenario.CountDown.FusedEffects.Program where

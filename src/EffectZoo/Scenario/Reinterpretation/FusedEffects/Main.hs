@@ -11,7 +11,7 @@ import           EffectZoo.Scenario.Reinterpretation.FusedEffects.Zooit
                                                as Zooit
 import           EffectZoo.Scenario.Reinterpretation.Shared
 
-listScenarios :: Int -> IO ([String], [String])
+listScenarios :: Int -> ([String], [String])
 listScenarios n =
   fmap concat (replicateM n Zooit.listScenarios)
     & toLoggedHTTP
@@ -19,3 +19,4 @@ listScenarios n =
     & runReader response
     & accumulateLogMessages
     & runWriter
+    & run

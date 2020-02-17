@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -dsuppress-type-signatures #-}
 module EffectZoo.Scenario.CountDown.FreerSimple.Main where
 
 import           Control.Monad.Freer

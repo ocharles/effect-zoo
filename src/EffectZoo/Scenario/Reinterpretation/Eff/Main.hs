@@ -1,13 +1,13 @@
-module EffectZoo.Scenario.Reinterpretation.FreerSimple.Main where
+{-# OPTIONS_GHC -dsuppress-uniques #-}
+
+module EffectZoo.Scenario.Reinterpretation.Eff.Main where
 
 import           Control.Monad
-import           Control.Monad.Freer
-import           Control.Monad.Freer.Reader
-import           Control.Monad.Freer.Writer
+import Control.Effect
 import           Data.Function
-import           EffectZoo.Scenario.Reinterpretation.FreerSimple.HTTP
-import           EffectZoo.Scenario.Reinterpretation.FreerSimple.Logging
-import           EffectZoo.Scenario.Reinterpretation.FreerSimple.Zooit
+import           EffectZoo.Scenario.Reinterpretation.Eff.HTTP
+import           EffectZoo.Scenario.Reinterpretation.Eff.Logging
+import           EffectZoo.Scenario.Reinterpretation.Eff.Zooit
                                                as Zooit
 import           EffectZoo.Scenario.Reinterpretation.Shared
 

@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -dsuppress-type-signatures #-}
 module EffectZoo.Scenario.CountDown.FusedEffects.Main where
 
 import "fused-effects" Control.Algebra

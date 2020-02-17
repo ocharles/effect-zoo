@@ -1,38 +1,40 @@
 module Main where
 
-import qualified Criterion
-import           Criterion.Types
+
 import qualified Data.ByteString.Lazy          as BS
 import qualified Data.Csv                      as Csv
-import           Data.Traversable                         ( for )
 import qualified EffectZoo.Scenario.BigStack   as BigStack
 import qualified EffectZoo.Scenario.CountDown  as CountDown
 import qualified EffectZoo.Scenario.FileSizes  as FileSizes
 import qualified EffectZoo.Scenario.Reinterpretation
                                                as Reinterpretation
-import           Statistics.Types
+-- import           Statistics.Types
+
+import Criterion.Main
+import Criterion.Types
+import Data.Foldable
 
 main :: IO ()
-main = do
-  for
-    [ ("big-stack.csv"       , BigStack.benchmarks)
-    , ("countdown.csv"       , CountDown.benchmarks)
-    , ("file-sizes.csv"      , FileSizes.benchmarks)
-    , ("reinterpretation.csv", Reinterpretation.benchmarks)
+main = for_
+    [ ("big-stack", BigStack.benchmarks)
+    , ("countdown", CountDown.benchmarks)
+    , ("file-sizes", FileSizes.benchmarks)
+    , ("reinterpretation", Reinterpretation.benchmarks)
     ]
-    (\(csvFile, scenario) -> do
-      reports <- for
-        scenario
-        (\(implementation, scenario, benchmarkable) -> do
-          Report { reportAnalysis = SampleAnalysis { anMean = e@Estimate { estPoint = mean } } } <-
-            Criterion.benchmark' benchmarkable
-
-          let (meanL, meanU) = confidenceInterval e
-
-          return (implementation, scenario, mean, meanL, meanU)
-        )
-
-      BS.writeFile csvFile (Csv.encode reports)
+    (\(name, scenario) -> do
+      let config = defaultConfig
+            { reportFile = Just (name <> ".html") }
+      defaultMainWith config scenario
+      -- reports <- for
+      --   scenario
+      --   (\(implementation, scenario, benchmarkable) -> do
+      --     Report { reportAnalysis = SampleAnalysis { anMean = e@Estimate { estPoint = mean } } } <-
+      --       Criterion.benchmark' benchmarkable
+      --
+      --     let (meanL, meanU) = confidenceInterval e
+      --
+      --     return (implementation, scenario, mean, meanL, meanU)
+      --   )
+      --
+      -- BS.writeFile csvFile (Csv.encode reports)
     )
-
-  return ()
