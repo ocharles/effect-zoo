@@ -1,14 +1,11 @@
-{-# LANGUAGE FlexibleContexts #-}
+module EffectZoo.Scenario.BigStack.Polysemy.Main where
 
-module EffectZoo.Scenario.BigStack.FusedEffects.Main where
-
-import "fused-effects" Control.Algebra
-import "fused-effects" Control.Carrier.Reader
-import "fused-effects" Control.Carrier.State.Strict
-import           Control.Monad
-import           Data.Function
-import           EffectZoo.Scenario.BigStack.FusedEffects.Identity
-import           EffectZoo.Scenario.BigStack.FusedEffects.Program
+import Polysemy
+import Polysemy.Reader
+import Polysemy.State
+import Data.Function
+import EffectZoo.Scenario.BigStack.Polysemy.Identity
+import EffectZoo.Scenario.BigStack.Polysemy.Program
 
 bigStack0 :: Int -> Int
 bigStack0 s = program & runReader n & execState s & run

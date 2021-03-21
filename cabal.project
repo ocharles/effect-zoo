@@ -1,2 +1,7 @@
 packages:
   effect-zoo.cabal
+
+source-repository-package
+    type: git
+    location: https://github.com/noughtmare/EvEff.git
+    tag: 9d90b78458a8f2dfc11830d3af008610627429b1

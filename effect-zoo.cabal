@@ -9,13 +9,16 @@ cabal-version:       >=1.10
 
 executable effect-zoo
   main-is:             Main.hs
-  build-depends:       base >=4.11 && <4.12,
-                       criterion >=1.5 && <1.6,
+  build-depends:       base >=4.11 && <4.15,
+                       criterion >=1.5,
                        simple-effects >=0.13 && <0.14,
-                       freer-simple >=1.1 && <1.2,
+                       freer-simple >=1.1 && <1.3,
                        transformers >=0.5 && <0.6,
                        mtl >=2.2 && <2.3,
-                       fused-effects >=0.1.2.1 && < 0.2,
+                       fused-effects >=1.0.0.1 && <1.1,
+                       polysemy >=1.3 && <1.4,
+--                       eff,
+                       eveff >=1.0.0.1 && <1.1,
                        unix,
                        cassava,
                        bytestring,
@@ -32,9 +35,15 @@ executable effect-zoo
     EffectZoo.Scenario.BigStack.MTL.Identity
     EffectZoo.Scenario.BigStack.MTL.Main
     EffectZoo.Scenario.BigStack.MTL.Program
+    EffectZoo.Scenario.BigStack.Polysemy.Identity
+    EffectZoo.Scenario.BigStack.Polysemy.Main
+    EffectZoo.Scenario.BigStack.Polysemy.Program
     EffectZoo.Scenario.BigStack.SimpleEffects.Identity
     EffectZoo.Scenario.BigStack.SimpleEffects.Main
     EffectZoo.Scenario.BigStack.SimpleEffects.Program
+    EffectZoo.Scenario.BigStack.EvEff.Identity
+    EffectZoo.Scenario.BigStack.EvEff.Main
+    EffectZoo.Scenario.BigStack.EvEff.Program
     EffectZoo.Scenario.CountDown
     EffectZoo.Scenario.CountDown.FreerSimple.Main
     EffectZoo.Scenario.CountDown.FreerSimple.Program
@@ -43,14 +52,22 @@ executable effect-zoo
     EffectZoo.Scenario.CountDown.MTL.LazyStateT
     EffectZoo.Scenario.CountDown.MTL.Program
     EffectZoo.Scenario.CountDown.MTL.StrictStateT
+    EffectZoo.Scenario.CountDown.Polysemy.Main
+    EffectZoo.Scenario.CountDown.Polysemy.Program
     EffectZoo.Scenario.CountDown.Reference
     EffectZoo.Scenario.CountDown.SimpleEffects.Main
     EffectZoo.Scenario.CountDown.SimpleEffects.Program
+    EffectZoo.Scenario.CountDown.EvEff.Main
+    EffectZoo.Scenario.CountDown.EvEff.Program
     EffectZoo.Scenario.FileSizes
     EffectZoo.Scenario.FileSizes.FreerSimple.File
     EffectZoo.Scenario.FileSizes.FreerSimple.Logging
     EffectZoo.Scenario.FileSizes.FreerSimple.Main
     EffectZoo.Scenario.FileSizes.FreerSimple.Program
+    EffectZoo.Scenario.FileSizes.EvEff.File
+    EffectZoo.Scenario.FileSizes.EvEff.Logging
+    EffectZoo.Scenario.FileSizes.EvEff.Main
+    EffectZoo.Scenario.FileSizes.EvEff.Program
     EffectZoo.Scenario.FileSizes.FusedEffects.File
     EffectZoo.Scenario.FileSizes.FusedEffects.Logging
     EffectZoo.Scenario.FileSizes.FusedEffects.Main
@@ -59,6 +76,10 @@ executable effect-zoo
     EffectZoo.Scenario.FileSizes.MTL.Logging
     EffectZoo.Scenario.FileSizes.MTL.Main
     EffectZoo.Scenario.FileSizes.MTL.Program
+    EffectZoo.Scenario.FileSizes.Polysemy.File
+    EffectZoo.Scenario.FileSizes.Polysemy.Logging
+    EffectZoo.Scenario.FileSizes.Polysemy.Main
+    EffectZoo.Scenario.FileSizes.Polysemy.Program
     EffectZoo.Scenario.FileSizes.Reference
     EffectZoo.Scenario.FileSizes.Shared
     EffectZoo.Scenario.FileSizes.SimpleEffects.File
@@ -74,10 +95,22 @@ executable effect-zoo
     EffectZoo.Scenario.Reinterpretation.FusedEffects.Logging
     EffectZoo.Scenario.Reinterpretation.FusedEffects.Main
     EffectZoo.Scenario.Reinterpretation.FusedEffects.Zooit
+    EffectZoo.Scenario.Reinterpretation.Polysemy.HTTP
+    EffectZoo.Scenario.Reinterpretation.Polysemy.Logging
+    EffectZoo.Scenario.Reinterpretation.Polysemy.Main
+    EffectZoo.Scenario.Reinterpretation.Polysemy.Zooit
     EffectZoo.Scenario.Reinterpretation.SimpleEffects.HTTP
     EffectZoo.Scenario.Reinterpretation.SimpleEffects.Logging
     EffectZoo.Scenario.Reinterpretation.SimpleEffects.Main
     EffectZoo.Scenario.Reinterpretation.SimpleEffects.Zooit
+    EffectZoo.Scenario.Reinterpretation.EvEff.HTTP
+    EffectZoo.Scenario.Reinterpretation.EvEff.Logging
+    EffectZoo.Scenario.Reinterpretation.EvEff.Main
+    EffectZoo.Scenario.Reinterpretation.EvEff.Zooit
     EffectZoo.Scenario.Reinterpretation.Shared
   default-language:    Haskell2010
-  ghc-options: -O2
+  ghc-options: -O2 -flate-specialise
+
+  default-extensions:
+    BangPatterns DeriveGeneric GADTs GeneralizedNewtypeDeriving KindSignatures
+    LambdaCase PackageImports ScopedTypeVariables TemplateHaskell TypeOperators

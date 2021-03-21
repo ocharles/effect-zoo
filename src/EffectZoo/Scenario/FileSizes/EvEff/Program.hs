@@ -1,23 +1,18 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module EffectZoo.Scenario.FileSizes.FusedEffects.Program where
+module EffectZoo.Scenario.FileSizes.EvEff.Program where
 
-import "fused-effects" Control.Algebra
-import           EffectZoo.Scenario.FileSizes.FusedEffects.File
-import           EffectZoo.Scenario.FileSizes.FusedEffects.Logging
+import           Control.Ev.Eff
+import           EffectZoo.Scenario.FileSizes.EvEff.File
+import           EffectZoo.Scenario.FileSizes.EvEff.Logging
 
-program
-  :: (Has File sig m, Has Logging sig m)
-  => [FilePath]
-  -> m Int
+program :: (File :? e, Logging :? e) => [FilePath] -> Eff e Int
 program files = do
   sizes <- traverse calculateFileSize files
   return (sum sizes)
 
 calculateFileSize
-  :: (Has File sig m, Has Logging sig m)
-  => FilePath
-  -> m Int
+  :: (File :? e, Logging :? e) => FilePath -> Eff e Int
 calculateFileSize path = do
   logMsg ("Calculating the size of " ++ path)
   msize <- tryFileSize path

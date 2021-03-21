@@ -1,23 +1,18 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module EffectZoo.Scenario.FileSizes.FusedEffects.Program where
+module EffectZoo.Scenario.FileSizes.Polysemy.Program where
 
-import "fused-effects" Control.Algebra
-import           EffectZoo.Scenario.FileSizes.FusedEffects.File
-import           EffectZoo.Scenario.FileSizes.FusedEffects.Logging
+import Polysemy
+import EffectZoo.Scenario.FileSizes.Polysemy.File
+import EffectZoo.Scenario.FileSizes.Polysemy.Logging
 
-program
-  :: (Has File sig m, Has Logging sig m)
-  => [FilePath]
-  -> m Int
+program :: (Member File effs, Member Logging effs) => [FilePath] -> Sem effs Int
 program files = do
   sizes <- traverse calculateFileSize files
   return (sum sizes)
 
 calculateFileSize
-  :: (Has File sig m, Has Logging sig m)
-  => FilePath
-  -> m Int
+  :: (Member File effs, Member Logging effs) => FilePath -> Sem effs Int
 calculateFileSize path = do
   logMsg ("Calculating the size of " ++ path)
   msize <- tryFileSize path

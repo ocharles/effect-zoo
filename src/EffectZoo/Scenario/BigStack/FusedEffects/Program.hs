@@ -2,13 +2,13 @@
 
 module EffectZoo.Scenario.BigStack.FusedEffects.Program where
 
-import           Control.Effect
-import           Control.Effect.Reader
-import           Control.Effect.State
+import "fused-effects" Control.Algebra
+import "fused-effects" Control.Effect.Reader
+import "fused-effects" Control.Effect.State
 import           Control.Monad
 
 program
-  :: (Member (Reader Int) sig, Member (State Int) sig, Carrier sig m, Monad m)
+  :: (Has (Reader Int) sig m, Has (State Int) sig m)
   => m ()
 program = do
   n <- ask

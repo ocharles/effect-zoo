@@ -1,36 +1,29 @@
 {-# language KindSignatures, FlexibleContexts, TypeOperators, FlexibleInstances, MultiParamTypeClasses, UndecidableInstances, DeriveFunctor #-}
 module EffectZoo.Scenario.Reinterpretation.FusedEffects.Logging where
 
-import           Data.Coerce
-import           Control.Effect
-import           Control.Effect.Carrier
-import           Control.Effect.Sum
-import           Control.Effect.Writer
+import GHC.Generics (Generic1)
+import "fused-effects" Control.Algebra
+import "fused-effects" Control.Effect.Sum
+import "fused-effects" Control.Effect.Writer
 
-data Logging (m :: * -> *) k = LogMsg String k
- deriving (Functor)
+data Logging m k = LogMsg String (m k)
+  deriving (Functor, Generic1)
 
-logMsg :: (Carrier sig m, Member Logging sig) => String -> m ()
-logMsg msg = send (LogMsg msg (ret ()))
+logMsg :: Has Logging sig m => String -> m ()
+logMsg msg = send (LogMsg msg (pure ()))
 
-instance Effect Logging where
-  handle state handler (LogMsg msg k) = LogMsg msg (handler (k <$ state))
-
-instance HFunctor Logging where
-  hmap _ = coerce
+instance HFunctor Logging
+instance Effect Logging
 
 newtype WriterLoggingC m a = WriterLoggingC { runWriterLoggingC :: m a }
+  deriving (Functor, Applicative, Monad)
 
-instance (Carrier sig m, Effect sig, Member (Writer [ String ]) sig, Monad m) => Carrier (Logging :+: sig) (WriterLoggingC m) where
-  ret = WriterLoggingC . ret
-  eff  =
-    WriterLoggingC
-      . handleSum
-          ( eff . handleCoercible )
-          ( \( LogMsg msg k ) -> tell [ msg ] >> runWriterLoggingC k )
+instance Has (Writer [String]) sig m => Algebra (Logging :+: sig) (WriterLoggingC m) where
+  alg (L (LogMsg msg k)) = WriterLoggingC (tell [msg]) >> k
+  alg (R other) = WriterLoggingC (alg (handleCoercible other))
 
 accumulateLogMessages
-  :: (Monad m, Carrier sig m, Effect sig, Member (Writer [String]) sig)
-  => Eff (WriterLoggingC m) a
+  :: Has (Writer [String]) sig m
+  => WriterLoggingC m a
   -> m a
-accumulateLogMessages m = runWriterLoggingC (interpret m)
+accumulateLogMessages = runWriterLoggingC
