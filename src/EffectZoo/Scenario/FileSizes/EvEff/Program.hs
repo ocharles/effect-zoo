@@ -1,18 +1,18 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module EffectZoo.Scenario.FileSizes.Eff.Program where
+module EffectZoo.Scenario.FileSizes.EvEff.Program where
 
-import           Control.Effect
-import           EffectZoo.Scenario.FileSizes.Eff.File
-import           EffectZoo.Scenario.FileSizes.Eff.Logging
+import           Control.Ev.Eff
+import           EffectZoo.Scenario.FileSizes.EvEff.File
+import           EffectZoo.Scenario.FileSizes.EvEff.Logging
 
-program :: (File :< effs, Logging :< effs) => [FilePath] -> Eff effs Int
+program :: (File :? e, Logging :? e) => [FilePath] -> Eff e Int
 program files = do
   sizes <- traverse calculateFileSize files
   return (sum sizes)
 
 calculateFileSize
-  :: (File :< effs, Logging :< effs) => FilePath -> Eff effs Int
+  :: (File :? e, Logging :? e) => FilePath -> Eff e Int
 calculateFileSize path = do
   logMsg ("Calculating the size of " ++ path)
   msize <- tryFileSize path

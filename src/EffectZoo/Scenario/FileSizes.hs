@@ -1,8 +1,6 @@
 module EffectZoo.Scenario.FileSizes where
 
 import           Criterion
-import qualified EffectZoo.Scenario.FileSizes.Eff.Main
-                                               as Eff
 import qualified EffectZoo.Scenario.FileSizes.FreerSimple.Main
                                                as FreerSimple
 import qualified EffectZoo.Scenario.FileSizes.FusedEffects.Main
@@ -15,6 +13,8 @@ import qualified EffectZoo.Scenario.FileSizes.Reference
                                                as Reference
 import qualified EffectZoo.Scenario.FileSizes.SimpleEffects.Main
                                                as SimpleEffects
+import qualified EffectZoo.Scenario.FileSizes.EvEff.Main
+                                               as EvEff
 
 benchmarks :: [Benchmark]
 benchmarks = do
@@ -24,7 +24,7 @@ benchmarks = do
     , ( "fused-effects" , FusedEffects.calculateFileSizes )
     , ( "mtl" , MTL.calculateFileSizes )
     , ( "polysemy" , Polysemy.calculateFileSizes )
-    , ( "eff" , Eff.calculateFileSizes )
+    , ( "eveff", EvEff.calculateFileSizes )
     , ( "Reference", Reference.calculateFileSizes )
     ]
 

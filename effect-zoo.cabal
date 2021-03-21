@@ -17,7 +17,8 @@ executable effect-zoo
                        mtl >=2.2 && <2.3,
                        fused-effects >=1.0.0.1 && <1.1,
                        polysemy >=1.3 && <1.4,
-                       eff,
+--                       eff,
+                       eveff >=1.0.0.1 && <1.1,
                        unix,
                        cassava,
                        bytestring,
@@ -25,9 +26,6 @@ executable effect-zoo
   hs-source-dirs:      src
   other-modules:
     EffectZoo.Scenario.BigStack
-    EffectZoo.Scenario.BigStack.Eff.Identity
-    EffectZoo.Scenario.BigStack.Eff.Main
-    EffectZoo.Scenario.BigStack.Eff.Program
     EffectZoo.Scenario.BigStack.FreerSimple.Identity
     EffectZoo.Scenario.BigStack.FreerSimple.Main
     EffectZoo.Scenario.BigStack.FreerSimple.Program
@@ -43,9 +41,10 @@ executable effect-zoo
     EffectZoo.Scenario.BigStack.SimpleEffects.Identity
     EffectZoo.Scenario.BigStack.SimpleEffects.Main
     EffectZoo.Scenario.BigStack.SimpleEffects.Program
+    EffectZoo.Scenario.BigStack.EvEff.Identity
+    EffectZoo.Scenario.BigStack.EvEff.Main
+    EffectZoo.Scenario.BigStack.EvEff.Program
     EffectZoo.Scenario.CountDown
-    EffectZoo.Scenario.CountDown.Eff.Main
-    EffectZoo.Scenario.CountDown.Eff.Program
     EffectZoo.Scenario.CountDown.FreerSimple.Main
     EffectZoo.Scenario.CountDown.FreerSimple.Program
     EffectZoo.Scenario.CountDown.FusedEffects.Main
@@ -58,15 +57,17 @@ executable effect-zoo
     EffectZoo.Scenario.CountDown.Reference
     EffectZoo.Scenario.CountDown.SimpleEffects.Main
     EffectZoo.Scenario.CountDown.SimpleEffects.Program
+    EffectZoo.Scenario.CountDown.EvEff.Main
+    EffectZoo.Scenario.CountDown.EvEff.Program
     EffectZoo.Scenario.FileSizes
-    EffectZoo.Scenario.FileSizes.Eff.File
-    EffectZoo.Scenario.FileSizes.Eff.Logging
-    EffectZoo.Scenario.FileSizes.Eff.Main
-    EffectZoo.Scenario.FileSizes.Eff.Program
     EffectZoo.Scenario.FileSizes.FreerSimple.File
     EffectZoo.Scenario.FileSizes.FreerSimple.Logging
     EffectZoo.Scenario.FileSizes.FreerSimple.Main
     EffectZoo.Scenario.FileSizes.FreerSimple.Program
+    EffectZoo.Scenario.FileSizes.EvEff.File
+    EffectZoo.Scenario.FileSizes.EvEff.Logging
+    EffectZoo.Scenario.FileSizes.EvEff.Main
+    EffectZoo.Scenario.FileSizes.EvEff.Program
     EffectZoo.Scenario.FileSizes.FusedEffects.File
     EffectZoo.Scenario.FileSizes.FusedEffects.Logging
     EffectZoo.Scenario.FileSizes.FusedEffects.Main
@@ -86,10 +87,6 @@ executable effect-zoo
     EffectZoo.Scenario.FileSizes.SimpleEffects.Main
     EffectZoo.Scenario.FileSizes.SimpleEffects.Program
     EffectZoo.Scenario.Reinterpretation
-    EffectZoo.Scenario.Reinterpretation.Eff.HTTP
-    EffectZoo.Scenario.Reinterpretation.Eff.Logging
-    EffectZoo.Scenario.Reinterpretation.Eff.Main
-    EffectZoo.Scenario.Reinterpretation.Eff.Zooit
     EffectZoo.Scenario.Reinterpretation.FreerSimple.HTTP
     EffectZoo.Scenario.Reinterpretation.FreerSimple.Logging
     EffectZoo.Scenario.Reinterpretation.FreerSimple.Main
@@ -106,6 +103,10 @@ executable effect-zoo
     EffectZoo.Scenario.Reinterpretation.SimpleEffects.Logging
     EffectZoo.Scenario.Reinterpretation.SimpleEffects.Main
     EffectZoo.Scenario.Reinterpretation.SimpleEffects.Zooit
+    EffectZoo.Scenario.Reinterpretation.EvEff.HTTP
+    EffectZoo.Scenario.Reinterpretation.EvEff.Logging
+    EffectZoo.Scenario.Reinterpretation.EvEff.Main
+    EffectZoo.Scenario.Reinterpretation.EvEff.Zooit
     EffectZoo.Scenario.Reinterpretation.Shared
   default-language:    Haskell2010
   ghc-options: -O2 -flate-specialise

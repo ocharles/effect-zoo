@@ -1,8 +1,6 @@
 module EffectZoo.Scenario.CountDown where
 
 import           Criterion
-import qualified EffectZoo.Scenario.CountDown.Eff.Main
-                                               as Eff
 import qualified EffectZoo.Scenario.CountDown.FreerSimple.Main
                                                as FreerSimple
 import qualified EffectZoo.Scenario.CountDown.FusedEffects.Main
@@ -17,6 +15,8 @@ import qualified EffectZoo.Scenario.CountDown.Reference
                                                as Reference
 import qualified EffectZoo.Scenario.CountDown.SimpleEffects.Main
                                                as SimpleEffects
+import qualified EffectZoo.Scenario.CountDown.EvEff.Main
+                                               as EvEff
 
 benchmarks :: [Benchmark]
 benchmarks = do
@@ -27,8 +27,8 @@ benchmarks = do
     , ("simple-effects", nf SimpleEffects.countDown)
     , ("fused-effects" , nf FusedEffects.countDown)
     , ("polysemy"      , nf Polysemy.countDown)
-    , ("eff"           , nf Eff.countDown)
     , ("Reference"     , nf Reference.countDown)
+    , ("eveff"         , nf EvEff.countDown)
     ]
 
   pure $ bgroup implementation $ flip map [100, 1000] $ \n ->
